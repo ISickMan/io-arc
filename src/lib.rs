@@ -40,6 +40,11 @@ impl<T> IoArc<T> {
     pub fn new(data: T) -> Self {
         Self(Arc::new(data))
     }
+
+    // into inner
+    pub fn into_inner(this: IoArc<T>) -> Option<T>{
+        Arc::into_inner(this.0)
+    }
 }
 
 impl<T> Read for IoArc<T>
